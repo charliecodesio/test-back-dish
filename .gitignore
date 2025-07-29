@@ -1,0 +1,49 @@
+# Entornos virtuales
+.venv/
+env/
+venv/
+
+# Archivos de configuración personal
+*.env
+.env.*
+
+# Cache de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de logs y bases de datos locales
+*.log
+*.sqlite3
+
+# Archivos de pruebas
+.coverage
+htmlcov/
+.tox/
+pytest_cache/
+.pytest_cache/
+
+# Configuración de editores
+.vscode/
+.idea/
+
+# Archivos de despliegue temporales
+.DS_Store
+*.pem
+*.key
+*.crt
+
+# Archivos de builds y empaquetado
+build/
+dist/
+*.egg-info/
+
+# AWS SAM / CDK / Serverless Framework
+.aws-sam/
+.cdk.out/
+.serverless/
+
+# Archivos específicos de Uvicorn / Swagger / OpenAPI si generas docs
+openapi.json
+swagger.json
