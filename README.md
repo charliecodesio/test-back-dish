@@ -1,46 +1,86 @@
-## BACKEND – README.md
+backend/README.md
 
-##  Versión en texto plano
-Task Management API – FastAPI (Deployed on AWS App Runner)
-Este es el backend para una aplicación de gestión de tareas construida con FastAPI, desplegada en AWS App Runner, conectada a una base de datos PostgreSQL (RDS) y expuesta mediante API Gateway.
+# Backend - FastAPI
 
-## Endpoints públicos
+Este es el backend de la aplicación de gestión de tareas, construido con **FastAPI**, **SQLAlchemy** y **PostgreSQL**.
 
-- **App Runner (Swagger UI):**  
-  https://ryjmczy9qy.us-east-1.awsapprunner.com/docs
+---
 
-- **API Gateway base URL:**  
-  https://g6wpg9ox8i.execute-api.us-east-1.amazonaws.com/dev
+## Requisitos
 
-## Funcionalidades
- - Registro e inicio de sesión
- - Crear, editar, eliminar y listar tareas
- - PostgreSQL en AWS RDS
- - Conexión segura usando Secrets Manager
- - Exposición pública con API Gateway
- - CORS habilitado para el frontend en S3
+- Python 3.9+
+- PostgreSQL
+- pipenv o virtualenv (opcional pero recomendado)
+
+---
+
+## Configuración
+
+1. Clona el repositorio y accede al directorio del backend:
+
+```bash
+git clone https://github.com/tuusuario/task-app.git
+cd task-app/backend
+```
+
+2. Crea un entorno virtual:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # En Windows: venv\Scripts\activate
+```
+
+3. Instala las dependencias:
+
+```bash
+pip install -r requirements.txt
+```
+---
+# requirements.txt para el backend (FastAPI + PostgreSQL + SQLAlchemy)
+
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+sqlalchemy==2.0.30
+psycopg2-binary==2.9.9
+python-dotenv==1.0.1
+boto3==1.34.103
+---
+
+4. Asegúrate de que la configuración de conexión a la base de datos esté correcta en `database.py`. Puedes usar valores hardcodeados o cargar desde Secrets Manager o variables de entorno.
+
+5. Ejecuta la aplicación:
+
+```bash
+uvicorn main:app --reload
+```
+
+- API disponible en: http://localhost:8000  
+- Documentación Swagger: http://localhost:8000/docs
+
+---
+
+## Estructura
+
+```
+backend/
+│
+├── main.py              # Punto de entrada
+├── database.py          # Conexión a PostgreSQL
+├── models/              # Definiciones ORM
+├── schemas/             # Esquemas Pydantic
+├── crud/                # Operaciones con base de datos
+├── secrets.py           # (opcional) Manejo de secretos
+└── requirements.txt     # Dependencias
+```
+
+---
 
 ## Tecnologías
- - FastAPI
- - PostgreSQL (AWS RDS)
- - SQLAlchemy
- - psycopg2
- - AWS App Runner
- - AWS API Gateway
- - AWS Secrets Manager
 
-## Cómo probar
-Abre Swagger:
-https://ryjmczy9qy.us-east-1.awsapprunner.com/docs
+- FastAPI
+- SQLAlchemy
+- PostgreSQL
+- Uvicorn
 
-O consume directamente la API desde el API Gateway:
-GET https://g6wpg9ox8i.execute-api.us-east-1.amazonaws.com/dev/tasks
+---
 
-## Estructura del proyecto
-.
-├── main.py
-├── models/
-├── schemas/
-├── services/
-├── database.py
-└── requirements.txt
